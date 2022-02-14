@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBEdificioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Propiedad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPropietario" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Nro" Type="nvarchar" MaxLength="12" />
+    <Property Name="Piso" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Area" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Porcentaje" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Habitado" Type="bit" Nullable="false" />
+    <Property Name="Descuento" Type="bit" Nullable="false" />
+    <Property Name="MontoDescuento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Propietario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Propietario_Propiedad">
+    <End Role="Propietario" Type="Self.Propietario" Multiplicity="1" />
+    <End Role="Propiedad" Type="Self.Propiedad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Propietario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Propiedad">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEdificioModelStoreContainer">
+    <EntitySet Name="Propiedad" EntityType="Self.Propiedad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Propietario_Propiedad" Association="Self.FK_Propietario_Propiedad">
+      <End Role="Propietario" EntitySet="Propietario" />
+      <End Role="Propiedad" EntitySet="Propiedad" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

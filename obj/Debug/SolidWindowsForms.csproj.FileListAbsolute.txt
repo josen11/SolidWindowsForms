@@ -1,0 +1,16 @@
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\SolidWindowsForms.exe.config
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\SolidWindowsForms.exe
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\SolidWindowsForms.pdb
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.csproj.AssemblyReference.cache
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.csproj.SuggestedBindingRedirects.cache
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.Properties.Resources.resources
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.csproj.GenerateResource.cache
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.csproj.CoreCompileInputs.cache
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.exe
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.pdb
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\EntityFramework.dll
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\EntityFramework.SqlServer.dll
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\EntityFramework.xml
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\bin\Debug\EntityFramework.SqlServer.xml
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.Form1.resources
+F:\Data J\2.Development\C#\WindowsForms\SolidWindowsForms\obj\Debug\SolidWindowsForms.csproj.CopyComplete

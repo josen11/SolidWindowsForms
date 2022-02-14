@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBEdificioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Propiedad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPropietario" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Nro" Type="nvarchar" MaxLength="12" />
+          <Property Name="Piso" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Area" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Porcentaje" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Habitado" Type="bit" Nullable="false" />
+          <Property Name="Descuento" Type="bit" Nullable="false" />
+          <Property Name="MontoDescuento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Propietario_Propiedad">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="1" />
+          <End Role="Propiedad" Type="Self.Propiedad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Propiedad">
+              <PropertyRef Name="IdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEdificioModelStoreContainer">
+          <EntitySet Name="Propiedad" EntityType="Self.Propiedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Propietario_Propiedad" Association="Self.FK_Propietario_Propiedad">
+            <End Role="Propietario" EntitySet="Propietario" />
+            <End Role="Propiedad" EntitySet="Propiedad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBEdificioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Propiedad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nro" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Piso" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Area" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Porcentaje" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Habitado" Type="Boolean" Nullable="false" />
+          <Property Name="Descuento" Type="Boolean" Nullable="false" />
+          <Property Name="MontoDescuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Propietario" Relationship="Self.FK_Propietario_Propiedad" FromRole="Propiedad" ToRole="Propietario" />
+        </EntityType>
+        <EntityType Name="Propietario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Propiedads" Relationship="Self.FK_Propietario_Propiedad" FromRole="Propietario" ToRole="Propiedad" />
+        </EntityType>
+        <Association Name="FK_Propietario_Propiedad">
+          <End Role="Propietario" Type="Self.Propietario" Multiplicity="1" />
+          <End Role="Propiedad" Type="Self.Propiedad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Propietario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Propiedad">
+              <PropertyRef Name="IdPropietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEdificioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Propiedads" EntityType="Self.Propiedad" />
+          <EntitySet Name="Propietarios" EntityType="Self.Propietario" />
+          <AssociationSet Name="FK_Propietario_Propiedad" Association="Self.FK_Propietario_Propiedad">
+            <End Role="Propietario" EntitySet="Propietarios" />
+            <End Role="Propiedad" EntitySet="Propiedads" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBEdificioModelStoreContainer" CdmEntityContainer="DBEdificioEntities">
+          <EntitySetMapping Name="Propiedads">
+            <EntityTypeMapping TypeName="DBEdificioModel.Propiedad">
+              <MappingFragment StoreEntitySet="Propiedad">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPropietario" ColumnName="IdPropietario" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Nro" ColumnName="Nro" />
+                <ScalarProperty Name="Piso" ColumnName="Piso" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Habitado" ColumnName="Habitado" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="MontoDescuento" ColumnName="MontoDescuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Propietarios">
+            <EntityTypeMapping TypeName="DBEdificioModel.Propietario">
+              <MappingFragment StoreEntitySet="Propietario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBEdificioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Propiedad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPropietario" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nro" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Piso" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Area" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Porcentaje" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Habitado" Type="Boolean" Nullable="false" />
+    <Property Name="Descuento" Type="Boolean" Nullable="false" />
+    <Property Name="MontoDescuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Propietario" Relationship="Self.FK_Propietario_Propiedad" FromRole="Propiedad" ToRole="Propietario" />
+  </EntityType>
+  <EntityType Name="Propietario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNI" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Propiedads" Relationship="Self.FK_Propietario_Propiedad" FromRole="Propietario" ToRole="Propiedad" />
+  </EntityType>
+  <Association Name="FK_Propietario_Propiedad">
+    <End Role="Propietario" Type="Self.Propietario" Multiplicity="1" />
+    <End Role="Propiedad" Type="Self.Propiedad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Propietario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Propiedad">
+        <PropertyRef Name="IdPropietario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEdificioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Propiedads" EntityType="Self.Propiedad" />
+    <EntitySet Name="Propietarios" EntityType="Self.Propietario" />
+    <AssociationSet Name="FK_Propietario_Propiedad" Association="Self.FK_Propietario_Propiedad">
+      <End Role="Propietario" EntitySet="Propietarios" />
+      <End Role="Propiedad" EntitySet="Propiedads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
