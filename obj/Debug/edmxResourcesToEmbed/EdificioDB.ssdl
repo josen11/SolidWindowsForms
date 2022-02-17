@@ -26,6 +26,14 @@
     <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
     <Property Name="Correo" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Propietario_Propiedad">
     <End Role="Propietario" Type="Self.Propietario" Multiplicity="1" />
     <End Role="Propiedad" Type="Self.Propiedad" Multiplicity="*" />
@@ -41,6 +49,7 @@
   <EntityContainer Name="DBEdificioModelStoreContainer">
     <EntitySet Name="Propiedad" EntityType="Self.Propiedad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Propietario" EntityType="Self.Propietario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Propietario_Propiedad" Association="Self.FK_Propietario_Propiedad">
       <End Role="Propietario" EntitySet="Propietario" />
       <End Role="Propiedad" EntitySet="Propiedad" />

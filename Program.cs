@@ -16,7 +16,8 @@ namespace SolidWindowsForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Windows Form que inicia al momento de correr el programa
+            Application.Run(new Login());
         }
     }
 }

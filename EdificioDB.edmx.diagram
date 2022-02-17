@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="DBEdificioModel.Propiedad" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEdificioModel.Propietario" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="DBEdificioModel.FK_Propietario_Propiedad" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBEdificioModel.Role" Width="1.5" PointX="5.375" PointY="4.125" />
+        <EntityTypeShape EntityType="DBEdificioModel.UserRole" Width="1.5" PointX="7.625" PointY="0.875" />
+        <EntityTypeShape EntityType="DBEdificioModel.User" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="DBEdificioModel.FK_UserRoles_Roles" />
+        <AssociationConnector Association="DBEdificioModel.FK_UserRoles_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
